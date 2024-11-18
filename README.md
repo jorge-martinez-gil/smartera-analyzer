@@ -1,0 +1,1 @@
+# smartera-analyzer
