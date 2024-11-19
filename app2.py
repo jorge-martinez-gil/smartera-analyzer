@@ -141,22 +141,32 @@ def main():
 
     village_choice = st.selectbox("Choose a Test Area:", villages, index=villages.index(DEFAULT_VILLAGE))
 
+    # Initialize session state for amenities and map
     if 'amenities' not in st.session_state:
         st.session_state.amenities = None
+    if 'map' not in st.session_state:
+        st.session_state.map = None
 
     if st.button('Show Amenities'):
         try:
             amenities = get_amenities_by_village(village_choice)
             if amenities and amenities.keys():
                 st.session_state.amenities = amenities  # Store in session state
+
+                # Create and store map in session state
                 first_amenity = next(iter(amenities.values()))[0]
                 m = folium.Map(location=[first_amenity['lat'], first_amenity['lon']], zoom_start=14)
                 add_markers_to_map(m, amenities)
+                st.session_state.map = m
                 folium_static(m)
             else:
                 st.warning(f"No amenities found for {village_choice}.")
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
+
+    # Display the map if it's in session state
+    if st.session_state.map:
+        folium_static(st.session_state.map)
 
     st.subheader("AI Assistant")
 
@@ -184,7 +194,8 @@ def main():
                     response_text = json_data.get('text', 'No text in response')
                     st.write("Response:", response_text)
                     
-                    pdf_filename = generate_pdf(response_text, f"AI_Analysis_{village_choice}.pdf")
+                    pdf_filename = f"AI_Analysis_{village_choice}.pdf"
+                    generate_pdf(response_text, pdf_filename)
                     with open(pdf_filename, "rb") as pdf_file:
                         st.download_button("Download Analysis as PDF", pdf_file, file_name=pdf_filename)
                 else:
@@ -198,5 +209,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
