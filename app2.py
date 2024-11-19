@@ -85,9 +85,9 @@ def add_markers_to_map(m, amenities):
                     fill_color=ACCENT_COLOR
                 ).add_to(m)
 
-def generate_pdf(text):
+def generate_pdf(text, filename):
     """
-    Generates a PDF from the provided text with proper word wrapping.
+    Generates a PDF from the provided text and saves it with the specified filename.
     """
     pdf = FPDF()
     pdf.add_page()
@@ -99,7 +99,6 @@ def generate_pdf(text):
     line_height = pdf.font_size * 2.5
 
     for line in text.split('\n'):
-        # Break lines that are too long
         words = line.split(' ')
         current_line = ""
         for word in words:
@@ -110,7 +109,9 @@ def generate_pdf(text):
                 current_line = f"{word} "
         pdf.cell(0, line_height, txt=current_line.strip(), ln=1)
     
-    return pdf
+    pdf.output(filename)
+    return filename
+
 
 def main():
     st.markdown(
