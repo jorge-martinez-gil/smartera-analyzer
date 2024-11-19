@@ -1,4 +1,4 @@
- import requests
+import requests
 from collections import defaultdict
 import streamlit as st
 import folium
