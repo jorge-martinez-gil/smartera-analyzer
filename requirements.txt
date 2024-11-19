@@ -5,4 +5,4 @@ streamlit-folium==0.23.2
 fpdf2==2.4.0
 requests==2.31.0
 pandas==2.1.1
-pillow>=7.1.0,<10 --only-binary :all:
+pillow<10 --only-binary :all:
