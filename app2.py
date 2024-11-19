@@ -26,10 +26,39 @@ CHATBOT_ID = 'X5mqGdkfYYzpPO2R7Q5Jv'
 
 # Villages list
 villages = [
-    "Ossana", "Vermiglio", "Sóller", "Port of Sóller", "Bileća",
-    "Padna", "Šmarje", "Agatovo", "Alexandrovо", "Brestovo",
-    "Gorsko Slivovo", "Kakrina", "Karpachevo", "Krushuna",
-    "Kramolin", "Tepava", "Alavieska", "Kalajoki", "Nivala"
+    "Caldes",
+    "Cavizzana",
+    "Terzolas",
+    "Male",
+    "Croviana",
+    "Dimaro Folgarida",
+    "Commezzadura",
+    "Mezzana",
+    "Pellizzano",
+    "Rabbi",
+    "Peio",
+    "Ossana",
+    "Vermiglio",
+    "Sóller",
+    "Port of Sóller",
+    "Fornalutx/Biniaraix",
+    "Alavieska",
+    "Kalajoki",
+    "Nivala",
+    "Nevesinje",
+    "Gacko",
+    "Bileća",
+    "Padna",
+    "Šmarje",
+    "Agatovo",
+    "Alexandrovo",
+    "Brestovo",
+    "Gorsko Slivovo",
+    "Kakrina",
+    "Karpachevo",
+    "Krushuna",
+    "Kramolin",
+    "Tepa"
 ]
 
 def get_amenities_by_village(village_name):
