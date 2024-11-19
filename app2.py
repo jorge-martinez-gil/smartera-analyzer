@@ -164,11 +164,11 @@ def main():
     st.image("logo.png", width=200)
 
     st.markdown(
-        f"<h1 style='color: {SECONDARY_COLOR};'>TA Analyzer</h1>",
+        f"<h1 style='color: {SECONDARY_COLOR};'>Pilots Analyzer</h1>",
         unsafe_allow_html=True
     )
 
-    village_choice = st.selectbox("Choose a Test Area:", villages, index=villages.index(DEFAULT_VILLAGE))
+    village_choice = st.selectbox("Choose a Village:", villages, index=villages.index(DEFAULT_VILLAGE))
 
     # Initialize session state for amenities and map
     if 'amenities' not in st.session_state:
