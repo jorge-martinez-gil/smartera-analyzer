@@ -87,11 +87,20 @@ The application includes a list of predefined villages such as:
 
 Add or remove villages in the `villages` list.
 
-## Troubleshooting
+## Citation
+For academic use, please refer to our work:
 
-- **API Errors**: Check if Overpass API or AI API endpoints are reachable.
-- **Missing Amenities**: Ensure the selected village has valid data.
-- **Map Display Issues**: Verify Folium and `streamlit-folium` versions.
+```
+@article{martinez2024overview,
+  title={An overview of civic engagement tools for rural communities},
+  author={Martinez-Gil, Jorge and Pichler, Mario and Lechat, Noemi and Lentini, Gianluca and Cvar, Nina and Trilar, Jure and Bucchiarone, Antonio and Marconi, Annapaola},
+  journal={Open Research Europe},
+  volume={4},
+  pages={195},
+  year={2024},
+  publisher={F1000 Research Limited London, UK}
+}
+```
 
 ## License
 
