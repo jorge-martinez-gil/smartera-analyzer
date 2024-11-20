@@ -105,3 +105,6 @@ For academic use, please refer to our work:
 ## License
 
 This project is licensed under the MIT License. 
+
+## Acknowledgement
+This project has received funding from the European Union’s Horizon Europe research and innovation programme under grant agreement No [101084160](SMART community-led transition for Europe's Rural Areas [SMART ERA]).
