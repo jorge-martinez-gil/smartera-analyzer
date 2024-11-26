@@ -8,15 +8,14 @@ from streamlit_folium import st_folium
 from osmnx.geometries import geometries_from_point
 from fpdf import FPDF
 
-# Extracted color palette from the logo.png
-PRIMARY_COLOR = "#164031"   # dark green
-SECONDARY_COLOR = "#d99115" # golden yellow
-ACCENT_COLOR = "#f16948"    # orange
-BACKGROUND_COLOR = "#f0ecdf" # background color from the image
-
-# Constants
+# Constants and Styling
 RADIUS = 1000
 DEFAULT_COORDINATES = (48.36964, 14.5128)
+PRIMARY_COLOR = "#164031"
+SECONDARY_COLOR = "#d99115"
+ACCENT_COLOR = "#f16948"
+BACKGROUND_COLOR = "#f0ecdf"
+
 API_URL = 'https://www.chatbase.co/api/v1/chat'
 API_HEADERS = {
     'Authorization': st.secrets["AUTH"],
@@ -63,11 +62,15 @@ villages_coordinates = {
 
 def get_amenities(latitude, longitude, amenity_type='all', radius=RADIUS):
     """
-    Fetches amenities around the given latitude and longitude.
+    Fetch amenities based on location, amenity type, and radius.
     """
-    tags = {'amenity': True} if amenity_type == 'all' else {'amenity': amenity_type}
-    amenities = geometries_from_point((latitude, longitude), tags=tags, dist=radius)
-    return amenities
+    try:
+        tags = {'amenity': True} if amenity_type == 'all' else {'amenity': amenity_type}
+        amenities = geometries_from_point((latitude, longitude), tags=tags, dist=radius)
+        return amenities
+    except Exception as e:
+        st.error(f"Error fetching amenities: {e}")
+        return pd.DataFrame()
 
 def count_entities(entities):
     """
