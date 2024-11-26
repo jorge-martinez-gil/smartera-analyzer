@@ -18,10 +18,10 @@ RADIUS = 1000
 DEFAULT_COORDINATES = (48.36964, 14.5128)
 API_URL = 'https://www.chatbase.co/api/v1/chat'
 API_HEADERS = {
-    'Authorization': 'Bearer d1a408c0-5e75-40ca-99e5-424e830d26ed',
+    'Authorization': st.secrets["AUTH"],
     'Content-Type': 'application/json'
 }
-CHATBOT_ID = 'X5mqGdkfYYzpPO2R7Q5Jv'
+CHATBOT_ID = st.secrets["ID"]
 
 # Villages and their coordinates
 villages_coordinates = {
