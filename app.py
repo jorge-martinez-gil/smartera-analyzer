@@ -4,7 +4,7 @@ import folium
 import requests
 import json
 import pandas as pd
-ame 'st_folium' is not defined
+from streamlit_folium import st_folium
 from fpdf import FPDF
 
 # Extracted color palette from the logo.png
