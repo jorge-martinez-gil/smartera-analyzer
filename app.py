@@ -4,7 +4,7 @@ import folium
 import requests
 import json
 import pandas as pd
-from streamlit_folium import folium_static
+from streamlit_folium import st_folium
 from fpdf import FPDF
 
 # Extracted color palette from the logo.png
@@ -18,10 +18,10 @@ RADIUS = 1000
 DEFAULT_COORDINATES = (48.36964, 14.5128)
 API_URL = 'https://www.chatbase.co/api/v1/chat'
 API_HEADERS = {
-    'Authorization': 'Bearer d1a408c0-5e75-40ca-99e5-424e830d26ed',
+    'Authorization': st.secrets["AUTH"],
     'Content-Type': 'application/json'
 }
-CHATBOT_ID = 'X5mqGdkfYYzpPO2R7Q5Jv'
+CHATBOT_ID = st.secrets["ID"]
 
 # Villages and their coordinates
 villages_coordinates = {
@@ -274,7 +274,7 @@ def main():
                 except Exception as e:
                     st.error(f"An error occurred: {str(e)}")
 
-    folium_static(m)
+    st_folium(m)
 
     st.subheader("AI Assistant")
     
