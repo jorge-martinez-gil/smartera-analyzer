@@ -4,7 +4,7 @@ import folium
 import requests
 import json
 import pandas as pd
-from streamlit_folium import st_folium
+from streamlit_folium import folium_static
 from fpdf import FPDF
 
 # Extracted color palette from the logo.png
@@ -18,10 +18,10 @@ RADIUS = 1000
 DEFAULT_COORDINATES = (48.36964, 14.5128)
 API_URL = 'https://www.chatbase.co/api/v1/chat'
 API_HEADERS = {
-    'Authorization': st.secrets["AUTH"],
+    'Authorization': 'Bearer d1a408c0-5e75-40ca-99e5-424e830d26ed',
     'Content-Type': 'application/json'
 }
-CHATBOT_ID = st.secrets["ID"]
+CHATBOT_ID = 'X5mqGdkfYYzpPO2R7Q5Jv'
 
 # Villages and their coordinates
 villages_coordinates = {
@@ -60,10 +60,12 @@ villages_coordinates = {
     "P6 - Devetaki Plateau - Tepava": (43.2106, 25.0286)
 }
 
-
-def get_amenities(latitude, longitude, amenity_type='all', radius=1000):
+def get_amenities(latitude, longitude, amenity_type='all', radius=RADIUS):
+    """
+    Fetches amenities around the given latitude and longitude.
+    """
     tags = {'amenity': True} if amenity_type == 'all' else {'amenity': amenity_type}
-    amenities = ox.features_from_point((latitude, longitude), tags=tags, dist=radius)
+    amenities = ox.geometries_from_point((latitude, longitude), tags=tags, dist=radius)
     return amenities
 
 def count_entities(entities):
@@ -272,7 +274,7 @@ def main():
                 except Exception as e:
                     st.error(f"An error occurred: {str(e)}")
 
-    st_folium(m)
+    folium_static(m)
 
     st.subheader("AI Assistant")
     
