@@ -4,7 +4,7 @@ import folium
 import requests
 import json
 import pandas as pd
-from streamlit_folium import folium_static
+from streamlit_folium import st_folium
 from fpdf import FPDF
 
 # Extracted color palette from the logo.png
@@ -274,7 +274,7 @@ def main():
                 except Exception as e:
                     st.error(f"An error occurred: {str(e)}")
 
-    folium_static(m)
+    st_folium(m)
 
     st.subheader("AI Assistant")
     
