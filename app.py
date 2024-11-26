@@ -60,12 +60,14 @@ villages_coordinates = {
     "P6 - Devetaki Plateau - Tepava": (43.2106, 25.0286)
 }
 
+from osmnx import geometries
+
 def get_amenities(latitude, longitude, amenity_type='all', radius=RADIUS):
     """
     Fetches amenities around the given latitude and longitude.
     """
     tags = {'amenity': True} if amenity_type == 'all' else {'amenity': amenity_type}
-    amenities = ox.geometries_from_point((latitude, longitude), tags=tags, dist=radius)
+    amenities = geometries.geometries_from_point((latitude, longitude), tags=tags, dist=radius)
     return amenities
 
 def count_entities(entities):
